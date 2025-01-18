@@ -1,0 +1,54 @@
+@startmindmap
+<style>
+mindmapDiagram {
+    :depth(0) {
+      BackGroundColor lightBlue
+      FontStyle bold
+    }
+    :depth(1) {
+      BackGroundColor lightGreen
+      FontStyle bold
+    }
+    :depth(2) {
+      BackGroundColor lightPink
+    }
+}
+</style>
+* k8s
+** Node
+***_ aka Minion, worker machine
+***_ is physical or virtual machine, where containers will be launched
+***_ need more than 1 node incase node is running fails
+** Cluster
+***_ a set of nodes
+***_ if 1 node fails, the app still accessible from the other nodes
+***_ helps in sharing load well.
+** Mater
+***_ aka **<color:lightBlue>control planes</color>**
+***_ is another node with Kubernetes installed in it
+***_ watch over the nodes in the cluster
+***_ store the information about the members of the cluster
+***_ responsible for the actual orchestration of containers on the worker nodes
+***_ move the workload of the failed node to another worker node when a node fails
+
+left side
+
+** Components
+*** API server
+****_ front-end for kubernetes to interact with kubernetes cluster
+****_ users, management devices, command line interfaces talk to it
+*** etcd service
+****_ distributed reliable key-value store
+****_ store <b>all data</b> used to manage the cluster
+*** schedulers
+****_ distribute work or containers accross multiple nodes
+****_ looks for newly created containers and assigns them to Nodes
+*** controllers
+****_ as the brain behind orchestration
+****_ make decisions to bring up new containers in such case when stuffs goes down
+*** container runtime
+****_ underlying software used to run containers (Docker)
+*** kubelet service
+****_ agent runs on each node in the cluster
+****_ ensure container are running on the nodes as expected
+@endmindmap
